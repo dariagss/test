@@ -1,0 +1,6 @@
+framework module Pods_TSUM_testTests {
+  umbrella header "Pods-TSUM_testTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

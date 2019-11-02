@@ -6,15 +6,22 @@
 //  Copyright © 2019 Daria Gapanyuk. All rights reserved.
 //
 
-import UIKit
+import RxSwift
 
 class ViewController: UIViewController {
 
+    let bag = DisposeBag()
+    let service = CountriesService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        service
+            .request()
+            .subscribe(onSuccess: { countries in
+                print("got: \(countries)")
+            })
+            .disposed(by: bag)
     }
-
-
 }
 
