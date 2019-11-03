@@ -18,6 +18,15 @@ class ViewController: UIViewController {
 
         service
             .request()
+            .subscribe(onSuccess: { res in
+                print("res: \(res)")
+            }) { er in
+                print("error: \(er)")
+            }
+            .disposed(by: bag)
+        
+        service
+            .requestInfo(name: "United Arab Emirates")
             .subscribe(onSuccess: { countries in
                 print("got: \(countries)")
             })
