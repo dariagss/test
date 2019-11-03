@@ -1,6 +1,5 @@
 //
-//  CountriesTarget.swift
-//  TSUM_test
+//  Copyright © 2019 Daria Gapanyuk. All rights reserved.
 //
 
 import Moya
