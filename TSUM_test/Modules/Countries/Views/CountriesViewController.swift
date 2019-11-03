@@ -8,10 +8,12 @@ import RxCocoa
 
 class CountriesViewController: UIViewController {
 
-    let _tableView = UITableView()
+    private let _tableView = UITableView()
+    private let _refreshControl = UIRefreshControl()
+    private let _spinner = UIActivityIndicatorView()
     
-    let bag = DisposeBag()
-    let service = CountriesService()
+    private let _bag = DisposeBag()
+    private let service = CountriesService()
     let items = PublishSubject<CountriesSectionModel>()
     
     typealias CountriesSectionModel = SectionModel<String, CountryShortDataCell.ViewState>
@@ -26,6 +28,14 @@ class CountriesViewController: UIViewController {
         })
     }()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -35,9 +45,13 @@ class CountriesViewController: UIViewController {
             equal(\.trailingAnchor),
             equal(\.bottomAnchor)
         ])
+        view.addSubview(_spinner, constraints: [equal(\.centerYAnchor),
+                                                equal(\.centerXAnchor)])
+        _spinner.startAnimating()
         
         _tableView.register(CountryShortDataCell.self,
                             forCellReuseIdentifier: String(describing: CountryShortDataCell.self))
+        _tableView.refreshControl = _refreshControl
         
         _tableView.rx.modelSelected(CountryShortDataCell.ViewState.self)
             .subscribe(onNext: { [weak self] model in
@@ -45,7 +59,14 @@ class CountriesViewController: UIViewController {
                 let vc = CountryInfoViewController()
                 self?.present(vc, animated: true, completion: nil)
             })
-            .disposed(by: bag)
+            .disposed(by: _bag)
+        
+        _refreshControl.rx
+            .controlEvent(UIControlEvents.valueChanged)
+            .subscribe(onNext: { _ in
+                print("refresh")
+            })
+            .disposed(by: _bag)
         
         service
             .request()
@@ -54,7 +75,7 @@ class CountriesViewController: UIViewController {
                 return countries.map { CountriesSectionModel.init(model: "",
                                                                   items: [($0.name, $0.population)]) }
             }
-        .   bind(to: _tableView.rx.items(dataSource: _dataSource))
-            .disposed(by: bag)
+            .bind(to: _tableView.rx.items(dataSource: _dataSource))
+            .disposed(by: _bag)
     }
 }

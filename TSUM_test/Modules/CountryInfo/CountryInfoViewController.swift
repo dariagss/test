@@ -8,7 +8,7 @@ import RxCocoa
 
 class CountryInfoViewController: UIViewController {
     let service = CountriesService()
-    let bag = DisposeBag()
+    let _bag = DisposeBag()
     
     private let _nameLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +41,8 @@ class CountryInfoViewController: UIViewController {
         return label
     }()
     
+    private let _spinner = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -59,6 +61,9 @@ class CountryInfoViewController: UIViewController {
             equal(\.leadingAnchor, constant: 16),
             equal(\.trailingAnchor, constant: -16)
         ])
+        view.addSubview(_spinner, constraints: [equal(\.centerYAnchor),
+                                                equal(\.centerXAnchor)])
+        _spinner.startAnimating()
         
         service.requestInfo(name: "Spain")
             .asObservable()
@@ -70,9 +75,10 @@ class CountryInfoViewController: UIViewController {
                                   currencies: ["some 1", "some 2"])
             }
             .subscribe(onNext: { [weak self] (state) in
+                self?._spinner.stopAnimating()
                 self?.render(state: state)
             })
-            .disposed(by: bag)
+            .disposed(by: _bag)
     }
     
     init() {
