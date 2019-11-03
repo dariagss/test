@@ -4,6 +4,7 @@
 
 import RxSwift
 import RxDataSources
+import RxCocoa
 
 class CountriesViewController: UIViewController {
 
@@ -38,8 +39,17 @@ class CountriesViewController: UIViewController {
         _tableView.register(CountryShortDataCell.self,
                             forCellReuseIdentifier: String(describing: CountryShortDataCell.self))
         
+        _tableView.rx.modelSelected(CountryShortDataCell.ViewState.self)
+            .subscribe(onNext: { [weak self] model in
+                print("name: \(model.name)")
+                let vc = CountryInfoViewController()
+                self?.present(vc, animated: true, completion: nil)
+            })
+            .disposed(by: bag)
+        
         service
-            .request().asObservable()
+            .request()
+            .asObservable()
             .map { countries -> [CountriesSectionModel] in
                 return countries.map { CountriesSectionModel.init(model: "",
                                                                   items: [($0.name, $0.population)]) }
