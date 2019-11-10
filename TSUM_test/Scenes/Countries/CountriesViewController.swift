@@ -93,15 +93,16 @@ class CountriesViewController: UIViewController {
             .drive(_tableView.rx.items(dataSource: _dataSource))
             .disposed(by: _bag)
         
-//        loadResult
-//            .map { $0.error }
-//            .filterNil()
-//            .drive(onNext: { [weak self] error in
-//                switch error {
-//                case .noConnection:
-//                    <#code#>
-//                }
-//            })
+        loadResult
+            .map { $0.error }
+            .filterNil()
+            .drive(onNext: { [weak self] error in
+                switch error {
+                case .noConnection:
+                    print("dar error")
+                }
+            })
+            .disposed(by: _bag)
         
         _viewModel.networkReachable
             .drive(onNext: { [weak self] isReachable in

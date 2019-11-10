@@ -21,7 +21,7 @@ struct CountriesViewModel {
     
     // Output
     var loadResult: Driver<LoadResult> {
-        return _loadResult.asDriver()
+        return _loadResult.asDriver(onErrorJustReturn: .failure(.noConnection))
     }
     var networkReachable: Driver<Bool> {
         return _isReachable.asDriver()
@@ -29,6 +29,7 @@ struct CountriesViewModel {
     
     init(requestCountries: @escaping AllCountriesRequester, reachability: Reachability?) {
         _reachability = reachability
+
         try? _reachability?.startNotifier()
         
         _reachability?.rx.isReachable
@@ -37,8 +38,9 @@ struct CountriesViewModel {
         
         loadCountries
             .startWith(())
-            .flatMap(requestCountries)
+            .flatMap(requestCountries).debug("dar:")
             .map { .success($0) }
+            .catchErrorJustReturn(.failure(.noConnection))
             .bind(to: _loadResult)
             .disposed(by: _bag)
     }

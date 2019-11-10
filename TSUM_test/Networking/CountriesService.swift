@@ -5,9 +5,10 @@
 import RxSwift
 import Moya
 
+typealias CountryInfoResult = Result<CountryInfo, CountriesService.CountryError>
+
 typealias AllCountriesRequester = () -> Single<[Country]>
 typealias CountryInfoRequester = (String) -> Single<CountryInfoResult>
-typealias CountryInfoResult = Result<CountryInfo, CountriesService.CountryError>
 
 struct CountriesService {
     private let _provider: MoyaProvider<CountriesTarget>
