@@ -23,6 +23,8 @@ PODS:
     - RxCocoa (~> 4)
     - RxSwift (~> 4)
   - RxSwift (4.5.0)
+  - RxTest (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
 
 DEPENDENCIES:
   - Moya/RxSwift
@@ -31,6 +33,7 @@ DEPENDENCIES:
   - RxOptional
   - RxReachability
   - RxSwift (~> 4.5.0)
+  - RxTest
 
 SPEC REPOS:
   trunk:
@@ -44,6 +47,7 @@ SPEC REPOS:
     - RxOptional
     - RxReachability
     - RxSwift
+    - RxTest
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -56,7 +60,8 @@ SPEC CHECKSUMS:
   RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
   RxReachability: 053f2d913db44998242ade488ccaef558f3ce7cb
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxTest: 3ccb66bfbace0bf7df1c43a7c75d046f8ce60372
 
-PODFILE CHECKSUM: 7ee2216980ab6b3e1a81e3a6ac612141fa814691
+PODFILE CHECKSUM: c1155ba356c3bec567d49f445d0076171b2fd611
 
 COCOAPODS: 1.8.4

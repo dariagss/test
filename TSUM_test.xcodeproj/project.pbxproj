@@ -20,6 +20,7 @@
 		F83C9873236CBF0200B17098 /* CountriesTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C9872236CBF0200B17098 /* CountriesTarget.swift */; };
 		F87638F423789524009E31E7 /* CountryInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87638F323789524009E31E7 /* CountryInfoViewModel.swift */; };
 		F87638F623789B6C009E31E7 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87638F523789B6C009E31E7 /* Models.swift */; };
+		F87638F82378C8BD009E31E7 /* AllCountriesRequesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87638F72378C8BD009E31E7 /* AllCountriesRequesterTests.swift */; };
 		F87C1038236F765100F6E3C1 /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C1037236F765100F6E3C1 /* CountryInfoViewController.swift */; };
 		F8A179D3236EE4B200CB1A23 /* CountryShortDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A179D2236EE4B200CB1A23 /* CountryShortDataCell.swift */; };
 		F8A179D6236EE55700CB1A23 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A179D5236EE55700CB1A23 /* UIView+.swift */; };
@@ -58,6 +59,7 @@
 		F83C9872236CBF0200B17098 /* CountriesTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTarget.swift; sourceTree = "<group>"; };
 		F87638F323789524009E31E7 /* CountryInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewModel.swift; sourceTree = "<group>"; };
 		F87638F523789B6C009E31E7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F87638F72378C8BD009E31E7 /* AllCountriesRequesterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesRequesterTests.swift; sourceTree = "<group>"; };
 		F87C1037236F765100F6E3C1 /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
 		F8A179D2236EE4B200CB1A23 /* CountryShortDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryShortDataCell.swift; sourceTree = "<group>"; };
 		F8A179D5236EE55700CB1A23 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				F83C9864236CB81600B17098 /* TSUM_testTests.swift */,
+				F87638F72378C8BD009E31E7 /* AllCountriesRequesterTests.swift */,
 				F83C9866236CB81600B17098 /* Info.plist */,
 			);
 			path = TSUM_testTests;
@@ -225,6 +228,7 @@
 				F83C985C236CB81600B17098 /* Sources */,
 				F83C985D236CB81600B17098 /* Frameworks */,
 				F83C985E236CB81600B17098 /* Resources */,
+				DBFA83FAFA4BA8F69B4AC58D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -355,6 +359,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSUM_test/Pods-TSUM_test-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DBFA83FAFA4BA8F69B4AC58D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSUM_testTests/Pods-TSUM_testTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TSUM_testTests/Pods-TSUM_testTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TSUM_testTests/Pods-TSUM_testTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -379,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87638F82378C8BD009E31E7 /* AllCountriesRequesterTests.swift in Sources */,
 				F83C9865236CB81600B17098 /* TSUM_testTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

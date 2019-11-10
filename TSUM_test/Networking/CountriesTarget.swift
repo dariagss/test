@@ -34,7 +34,16 @@ extension CountriesTarget: TargetType {
     }
     
     var sampleData: Data {
-        return Data()
+        switch self {
+        case .countries:
+            return """
+            [{
+            "name": "Spain",
+            "population": 123}]
+            """.data(using: .utf8) ?? Data()
+        case .country(_):
+            return Data()
+        }
     }
 }
 

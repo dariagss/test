@@ -14,7 +14,9 @@ target 'TSUM_test' do
 
   target 'TSUM_testTests' do
     inherit! :search_paths
-    # Pods for testing
+      pod 'RxSwift', '~> 4.5.0'
+      pod 'Moya/RxSwift'
+      pod 'RxTest'
   end
 
 end
