@@ -8,7 +8,9 @@ target 'TSUM_test' do
   pod 'RxSwift', '~> 4.5.0'
   pod 'RxCocoa', '~> 4.5.0'
   pod 'RxDataSources', '~> 3.0'
+  pod 'RxOptional'
   pod 'Moya/RxSwift'
+  pod 'RxReachability'
 
   target 'TSUM_testTests' do
     inherit! :search_paths

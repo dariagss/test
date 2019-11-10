@@ -1,12 +1,9 @@
 //
-//  AppDelegate.swift
-//  TSUM_test
-//
-//  Created by Artem Viter on 01/11/2019.
 //  Copyright © 2019 Daria Gapanyuk. All rights reserved.
 //
 
 import UIKit
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let countriesViewController = CountriesViewController()
+        let countriesViewModel = CountriesViewModel(requestCountries: CountriesService().request,
+                                                    reachability: Reachability())
+        let countriesViewController = CountriesViewController(viewModel: countriesViewModel)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = countriesViewController
         window?.makeKeyAndVisible()

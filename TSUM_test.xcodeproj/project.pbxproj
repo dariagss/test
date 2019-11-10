@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		412676D6E01AB57650EBF3A1 /* Pods_TSUM_test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F4654FC648D26FC45FB406 /* Pods_TSUM_test.framework */; };
 		B166B95386F1A5BBBDEFCC58 /* Pods_TSUM_testTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A33D064F2E8725D1D7F4B9 /* Pods_TSUM_testTests.framework */; };
+		F80DC0272370809B00555D8D /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80DC0262370809B00555D8D /* CountriesViewModel.swift */; };
+		F80DC02A237773BC00555D8D /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80DC029237773BC00555D8D /* ExternalAccessory.framework */; };
 		F83C9850236CB81200B17098 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C984F236CB81200B17098 /* AppDelegate.swift */; };
 		F83C9852236CB81200B17098 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C9851236CB81200B17098 /* CountriesViewController.swift */; };
 		F83C9857236CB81600B17098 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F83C9856236CB81600B17098 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 		F83C9865236CB81600B17098 /* TSUM_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C9864236CB81600B17098 /* TSUM_testTests.swift */; };
 		F83C9870236CBBF200B17098 /* CountriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C986F236CBBF200B17098 /* CountriesService.swift */; };
 		F83C9873236CBF0200B17098 /* CountriesTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83C9872236CBF0200B17098 /* CountriesTarget.swift */; };
+		F87638F423789524009E31E7 /* CountryInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87638F323789524009E31E7 /* CountryInfoViewModel.swift */; };
+		F87638F623789B6C009E31E7 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87638F523789B6C009E31E7 /* Models.swift */; };
 		F87C1038236F765100F6E3C1 /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C1037236F765100F6E3C1 /* CountryInfoViewController.swift */; };
 		F8A179D3236EE4B200CB1A23 /* CountryShortDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A179D2236EE4B200CB1A23 /* CountryShortDataCell.swift */; };
 		F8A179D6236EE55700CB1A23 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A179D5236EE55700CB1A23 /* UIView+.swift */; };
@@ -38,6 +42,9 @@
 		D8F4654FC648D26FC45FB406 /* Pods_TSUM_test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSUM_test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FF76EED6C4400212FB9599 /* Pods-TSUM_testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TSUM_testTests.release.xcconfig"; path = "Target Support Files/Pods-TSUM_testTests/Pods-TSUM_testTests.release.xcconfig"; sourceTree = "<group>"; };
 		F2A33D064F2E8725D1D7F4B9 /* Pods_TSUM_testTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TSUM_testTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F80DC0262370809B00555D8D /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		F80DC028237773BC00555D8D /* TSUM_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TSUM_test.entitlements; sourceTree = "<group>"; };
+		F80DC029237773BC00555D8D /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		F83C984C236CB81200B17098 /* TSUM_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSUM_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83C984F236CB81200B17098 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F83C9851236CB81200B17098 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +56,8 @@
 		F83C9866236CB81600B17098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F83C986F236CBBF200B17098 /* CountriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesService.swift; sourceTree = "<group>"; };
 		F83C9872236CBF0200B17098 /* CountriesTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesTarget.swift; sourceTree = "<group>"; };
+		F87638F323789524009E31E7 /* CountryInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewModel.swift; sourceTree = "<group>"; };
+		F87638F523789B6C009E31E7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F87C1037236F765100F6E3C1 /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
 		F8A179D2236EE4B200CB1A23 /* CountryShortDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryShortDataCell.swift; sourceTree = "<group>"; };
 		F8A179D5236EE55700CB1A23 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -59,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80DC02A237773BC00555D8D /* ExternalAccessory.framework in Frameworks */,
 				412676D6E01AB57650EBF3A1 /* Pods_TSUM_test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +87,7 @@
 		91CBF0EC350BCD7A4FEC54F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F80DC029237773BC00555D8D /* ExternalAccessory.framework */,
 				D8F4654FC648D26FC45FB406 /* Pods_TSUM_test.framework */,
 				F2A33D064F2E8725D1D7F4B9 /* Pods_TSUM_testTests.framework */,
 			);
@@ -106,9 +117,10 @@
 		F83C984E236CB81200B17098 /* TSUM_test */ = {
 			isa = PBXGroup;
 			children = (
+				F80DC028237773BC00555D8D /* TSUM_test.entitlements */,
 				F83C984F236CB81200B17098 /* AppDelegate.swift */,
 				F8A179D4236EE54400CB1A23 /* Helpers */,
-				F8A179CF236EE45200CB1A23 /* Modules */,
+				F8A179CF236EE45200CB1A23 /* Scenes */,
 				F83C9871236CBED600B17098 /* Networking */,
 				F83C9856236CB81600B17098 /* Assets.xcassets */,
 				F83C9858236CB81600B17098 /* LaunchScreen.storyboard */,
@@ -129,6 +141,7 @@
 		F83C9871236CBED600B17098 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F87638F523789B6C009E31E7 /* Models.swift */,
 				F83C986F236CBBF200B17098 /* CountriesService.swift */,
 				F83C9872236CBF0200B17098 /* CountriesTarget.swift */,
 			);
@@ -139,34 +152,28 @@
 			isa = PBXGroup;
 			children = (
 				F87C1037236F765100F6E3C1 /* CountryInfoViewController.swift */,
+				F87638F323789524009E31E7 /* CountryInfoViewModel.swift */,
 			);
 			path = CountryInfo;
 			sourceTree = "<group>";
 		};
-		F8A179CF236EE45200CB1A23 /* Modules */ = {
+		F8A179CF236EE45200CB1A23 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				F8A179D0236EE46500CB1A23 /* Countries */,
 				F87C1036236F75D100F6E3C1 /* CountryInfo */,
 			);
-			path = Modules;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		F8A179D0236EE46500CB1A23 /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				F8A179D1236EE46D00CB1A23 /* Views */,
-			);
-			path = Countries;
-			sourceTree = "<group>";
-		};
-		F8A179D1236EE46D00CB1A23 /* Views */ = {
-			isa = PBXGroup;
-			children = (
+				F80DC0262370809B00555D8D /* CountriesViewModel.swift */,
 				F83C9851236CB81200B17098 /* CountriesViewController.swift */,
 				F8A179D2236EE4B200CB1A23 /* CountryShortDataCell.swift */,
 			);
-			path = Views;
+			path = Countries;
 			sourceTree = "<group>";
 		};
 		F8A179D4236EE54400CB1A23 /* Helpers */ = {
@@ -358,10 +365,13 @@
 				F8A179D6236EE55700CB1A23 /* UIView+.swift in Sources */,
 				F83C9852236CB81200B17098 /* CountriesViewController.swift in Sources */,
 				F83C9870236CBBF200B17098 /* CountriesService.swift in Sources */,
+				F80DC0272370809B00555D8D /* CountriesViewModel.swift in Sources */,
 				F8A179D3236EE4B200CB1A23 /* CountryShortDataCell.swift in Sources */,
 				F87C1038236F765100F6E3C1 /* CountryInfoViewController.swift in Sources */,
 				F83C9850236CB81200B17098 /* AppDelegate.swift in Sources */,
+				F87638F423789524009E31E7 /* CountryInfoViewModel.swift in Sources */,
 				F83C9873236CBF0200B17098 /* CountriesTarget.swift in Sources */,
+				F87638F623789B6C009E31E7 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +526,7 @@
 			baseConfigurationReference = 7808C4206035D1B04CC21CDE /* Pods-TSUM_test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TSUM_test/TSUM_test.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PAFXCTH32R;
 				INFOPLIST_FILE = TSUM_test/Info.plist;
@@ -535,6 +546,7 @@
 			baseConfigurationReference = C69A074375C0AE068260D65E /* Pods-TSUM_test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TSUM_test/TSUM_test.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PAFXCTH32R;
 				INFOPLIST_FILE = TSUM_test/Info.plist;

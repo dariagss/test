@@ -7,6 +7,7 @@ PODS:
   - Moya/RxSwift (13.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - ReachabilitySwift (4.3.1)
   - Result (4.1.0)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
@@ -14,12 +15,21 @@ PODS:
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
+  - RxOptional (3.6.2):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxReachability (0.1.8):
+    - ReachabilitySwift (~> 4.3.0)
+    - RxCocoa (~> 4)
+    - RxSwift (~> 4)
   - RxSwift (4.5.0)
 
 DEPENDENCIES:
   - Moya/RxSwift
   - RxCocoa (~> 4.5.0)
   - RxDataSources (~> 3.0)
+  - RxOptional
+  - RxReachability
   - RxSwift (~> 4.5.0)
 
 SPEC REPOS:
@@ -27,20 +37,26 @@ SPEC REPOS:
     - Alamofire
     - Differentiator
     - Moya
+    - ReachabilitySwift
     - Result
     - RxCocoa
     - RxDataSources
+    - RxOptional
+    - RxReachability
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
+  RxReachability: 053f2d913db44998242ade488ccaef558f3ce7cb
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: c5a6c097d1b69de8e36713c03a142fd4ec8ddb13
+PODFILE CHECKSUM: 7ee2216980ab6b3e1a81e3a6ac612141fa814691
 
 COCOAPODS: 1.8.4

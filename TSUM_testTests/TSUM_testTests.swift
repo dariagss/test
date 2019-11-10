@@ -1,8 +1,4 @@
 //
-//  TSUM_testTests.swift
-//  TSUM_testTests
-//
-//  Created by Artem Viter on 01/11/2019.
 //  Copyright © 2019 Daria Gapanyuk. All rights reserved.
 //
 

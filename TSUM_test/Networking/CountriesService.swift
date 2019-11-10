@@ -5,10 +5,8 @@
 import RxSwift
 import Moya
 
-struct Country {
-    let name: String
-    let population: Int
-}
+typealias AllCountriesRequester = () -> Single<[Country]>
+typealias CountryInfoRequester = (String) -> Single<CountryInfo?>
 
 struct CountriesService {
     private let _provider: MoyaProvider<CountriesTarget>
@@ -23,16 +21,22 @@ struct CountriesService {
             .filterSuccessfulStatusCodes()
             .catchError { throw $0 }
             .map([CountryResponse].self)
-            .map {
-                $0.map { Country(name: $0.name,
-                                 population: $0.population) }
-        }
+            .map { $0.map { .init(name: $0.name, population: $0.population) } }
     }
-    func requestInfo(name: String) -> Single<[CountryInfoResponse]> {
+    func requestInfo(name: String) -> Single<CountryInfo?> {
         return _provider.rx
             .request(.country(name))
             .catchError { throw $0 }
             .map([CountryInfoResponse].self)
+            .map { $0.map { .init(name: $0.name,
+                                  capital: $0.capital,
+                                  population: $0.population,
+                                  borders: $0.borders,
+                                  currencies: $0.currencies.map { .init(code: $0.code,
+                                                                        name: $0.name,
+                                                                        symbol: $0.symbol) })
+            }.first
+        }
     }
 }
 
