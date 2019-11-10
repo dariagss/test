@@ -57,16 +57,29 @@ class CountryInfoViewController: UIViewController {
                                                 equal(\.centerXAnchor)])
         _spinner.startAnimating()
         
-        _viewModel.countryInfo
+        let info = _viewModel.countryInfo
+            .map { $0.country }
+            .filterNil()
+        info
             .map { ViewState.init(name: $0.name,
                                   capital: $0.capital,
                                   population: $0.population,
                                   borders: $0.borders,
                                   currencies: $0.currencies.map { ($0.name, $0.symbol) })
             }
-            .drive(onNext: { [weak self] (state) in
+            .drive(onNext: { [weak self] state in
                 self?._spinner.stopAnimating()
                 self?.render(state: state)
+            })
+            .disposed(by: _bag)
+        
+        let error = _viewModel.countryInfo
+            .map { $0.error }
+            .filterNil()
+        error
+            .drive(onNext: { [weak self] error in
+                self?._spinner.stopAnimating()
+                self?.showErrorAlert(error: error)
             })
             .disposed(by: _bag)
     }
@@ -78,6 +91,26 @@ class CountryInfoViewController: UIViewController {
         _bordersLabel.render(title: "Borders", info: state.borders.joined(separator: ", "))
         let currencies = state.currencies.map { "\($0.symbol), \($0.name)" }
         _currenciesLabel.render(title: "Currencies", info: currencies.joined(separator: "\n"))
+    }
+    
+    func showErrorAlert(error: CountriesService.CountryError) {
+        let alert = UIAlertController(title: "Error",
+                                      message: error.errorMessage,
+                                      preferredStyle: .alert)
+        alert.addAction(.init(title: "Cancel", style: .cancel, handler: { _ in }))
+        let isErrorFatal: Bool
+        switch error {
+        case .unknown:
+            isErrorFatal = false
+        case .noSuchCountry:
+            isErrorFatal = true
+        }
+        if !isErrorFatal {
+            alert.addAction(.init(title: "Try again", style: .default, handler: { [weak self] _ in
+                self?._viewModel.loadInfo.onNext(())
+            }))
+        }
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -94,6 +127,17 @@ extension CountryInfoViewController {
 private extension CountryInfoViewController {
     enum Constants {
         static let sideOffset = CGFloat(16)
+    }
+}
+
+private extension CountriesService.CountryError {
+    var errorMessage: String {
+        switch self {
+        case .unknown:
+            return "Something went wrong. Plesae check network connection and try again."
+        case .noSuchCountry:
+            return "We couldn't find such country 😔"
+        }
     }
 }
 
@@ -132,6 +176,6 @@ class InfoView: UIView {
     
     func render(title: String, info: String) {
         _titleLabel.text = title + ":"
-        _infoLabel.text = info
+        _infoLabel.text = info.isNotEmpty ? info : "No info 😔"
     }
 }

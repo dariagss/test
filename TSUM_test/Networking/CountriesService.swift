@@ -6,7 +6,8 @@ import RxSwift
 import Moya
 
 typealias AllCountriesRequester = () -> Single<[Country]>
-typealias CountryInfoRequester = (String) -> Single<CountryInfo?>
+typealias CountryInfoRequester = (String) -> Single<CountryInfoResult>
+typealias CountryInfoResult = Result<CountryInfo, CountriesService.CountryError>
 
 struct CountriesService {
     private let _provider: MoyaProvider<CountriesTarget>
@@ -23,20 +24,34 @@ struct CountriesService {
             .map([CountryResponse].self)
             .map { $0.map { .init(name: $0.name, population: $0.population) } }
     }
-    func requestInfo(name: String) -> Single<CountryInfo?> {
+    func requestInfo(name: String) -> Single<Result<CountryInfo, CountryError>> {
         return _provider.rx
             .request(.country(name))
-            .catchError { throw $0 }
+            .filterSuccessfulStatusCodes()
             .map([CountryInfoResponse].self)
-            .map { $0.map { .init(name: $0.name,
-                                  capital: $0.capital,
-                                  population: $0.population,
-                                  borders: $0.borders,
-                                  currencies: $0.currencies.map { .init(code: $0.code,
-                                                                        name: $0.name,
-                                                                        symbol: $0.symbol) })
-            }.first
-        }
+            .map { response -> CountryInfo? in
+                return response.first.map { .init(name: $0.name,
+                                                  capital: $0.capital,
+                                                  population: $0.population,
+                                                  borders: $0.borders,
+                                                  currencies: $0.currencies.map { .init(code: $0.code,
+                                                                                        name: $0.name,
+                                                                                        symbol: $0.symbol) })
+                }
+            }
+            .map {
+                if let country = $0 {
+                    return .success(country)
+                } else {
+                    return .failure(.noSuchCountry)
+                }
+            }
+            .catchErrorJustReturn(.failure(.unknown))
     }
 }
 
+extension CountriesService {
+    enum CountryError: Error {
+        case unknown, noSuchCountry
+    }
+}

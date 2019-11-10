@@ -59,6 +59,12 @@ class CountriesViewController: UIViewController {
                             forCellReuseIdentifier: String(describing: CountryShortDataCell.self))
         _tableView.refreshControl = _refreshControl
         
+        _tableView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                self?._tableView.deselectRow(at: $0, animated: true)
+            })
+            .disposed(by: _bag)
+        
         _tableView.rx.modelSelected(CountryShortDataCell.ViewState.self)
             .subscribe(onNext: { [weak self] model in
                 let vc = CountryInfoViewController(viewModel: .init(countryName: model.name,
