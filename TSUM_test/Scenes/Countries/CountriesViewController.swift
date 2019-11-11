@@ -99,7 +99,8 @@ class CountriesViewController: UIViewController {
             .drive(onNext: { [weak self] error in
                 switch error {
                 case .noConnection:
-                    print("dar error")
+                    self?._noConnectionView.isHidden = false
+                    self?._noConnectionView.render(state: "No network connection")
                 }
             })
             .disposed(by: _bag)
@@ -110,7 +111,6 @@ class CountriesViewController: UIViewController {
                 self?._noConnectionView.render(state: "No network connection")
             })
             .disposed(by: _bag)
-        
     }
 }
 

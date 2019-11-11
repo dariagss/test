@@ -16,10 +16,10 @@ class CountryInfoViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    private let _capitalNameLabel = InfoView()
-    private let _populationLabel = InfoView()
-    private let _bordersLabel = InfoView()
-    private let _currenciesLabel = InfoView()
+    private let _capitalNameView = InfoView()
+    private let _populationView = InfoView()
+    private let _bordersView = InfoView()
+    private let _currenciesView = InfoView()
     
     private let _spinner = UIActivityIndicatorView()
     
@@ -38,10 +38,10 @@ class CountryInfoViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 15
-        stackView.addArrangedSubview(_capitalNameLabel)
-        stackView.addArrangedSubview(_populationLabel)
-        stackView.addArrangedSubview(_bordersLabel)
-        stackView.addArrangedSubview(_currenciesLabel)
+        stackView.addArrangedSubview(_capitalNameView)
+        stackView.addArrangedSubview(_populationView)
+        stackView.addArrangedSubview(_bordersView)
+        stackView.addArrangedSubview(_currenciesView)
         
         view.addSubview(_nameLabel, constraints: [
             equal(\.topAnchor, constant: 20),
@@ -86,18 +86,20 @@ class CountryInfoViewController: UIViewController {
     
     func render(state: ViewState) {
         _nameLabel.text = state.name
-        _capitalNameLabel.render(title: "Capital", info: state.capital)
-        _populationLabel.render(title: "Population", info: "\(state.population)")
-        _bordersLabel.render(title: "Borders", info: state.borders.joined(separator: ", "))
+        _capitalNameView.render(title: "Capital", info: state.capital)
+        _populationView.render(title: "Population", info: "\(state.population)")
+        _bordersView.render(title: "Borders", info: state.borders.joined(separator: ", "))
         let currencies = state.currencies.map { "\($0.symbol), \($0.name)" }
-        _currenciesLabel.render(title: "Currencies", info: currencies.joined(separator: "\n"))
+        _currenciesView.render(title: "Currencies", info: currencies.joined(separator: "\n"))
     }
     
     func showErrorAlert(error: CountriesService.CountryError) {
         let alert = UIAlertController(title: "Error",
                                       message: error.errorMessage,
                                       preferredStyle: .alert)
-        alert.addAction(.init(title: "Cancel", style: .cancel, handler: { _ in }))
+        alert.addAction(.init(title: "Cancel", style: .cancel, handler: { [weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        }))
         let isErrorFatal: Bool
         switch error {
         case .unknown:
@@ -107,6 +109,7 @@ class CountryInfoViewController: UIViewController {
         }
         if !isErrorFatal {
             alert.addAction(.init(title: "Try again", style: .default, handler: { [weak self] _ in
+                self?._spinner.startAnimating()
                 self?._viewModel.loadInfo.onNext(())
             }))
         }
